@@ -1,401 +1,1418 @@
 doctype html
-html(lang='en')
-
-    head
-
-        meta(charset='utf-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
-        meta(name='description', content='')
-        meta(name='author', content='')
-
-        title Agency - Start Bootstrap Theme
-
-        // Favicon
-        link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
-
-        // Font Awesome icons (free version)
-        script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js', crossorigin='anonymous')
-
-        // Google fonts
-        link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
-        link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
-
-        // Core theme CSS (includes Bootstrap)
-        link(href='css/styles.css', rel='stylesheet')
-
-    body#page-top
-
-        // Navigation
-        nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
-            .container
-                a.navbar-brand(href='#page-top')
-                    img(src='assets/img/navbar-logo.svg', alt='...')
-                button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-                    | Menu
-                    i.fas.fa-bars.ms-1
-                #navbarResponsive.collapse.navbar-collapse
-                    ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
-                        li.nav-item
-                            a.nav-link(href='#services') Services
-                        li.nav-item
-                            a.nav-link(href='#portfolio') Portfolio
-                        li.nav-item
-                            a.nav-link(href='#about') About
-                        li.nav-item
-                            a.nav-link(href='#team') Team
-                        li.nav-item
-                            a.nav-link(href='#contact') Contact
-        // Masthead
-        header.masthead
-            .container
-                .masthead-subheading Welcome To Our Studio!
-                .masthead-heading.text-uppercase It's Nice To Meet You
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#services') Tell Me More
-
-        // Services
-        section#services.page-section
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Services
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                .row.text-center
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse
-                        h4.my-3 E-Commerce
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-laptop.fa-stack-1x.fa-inverse
-                        h4.my-3 Responsive Design
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-lock.fa-stack-1x.fa-inverse
-                        h4.my-3 Web Security
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-
-        // Portfolio Grid
-        section#portfolio.page-section.bg-light
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Portfolio
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                .row
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 1
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal1')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/1.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Threads
-                                .portfolio-caption-subheading.text-muted Illustration
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 2
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal2')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/2.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Explore
-                                .portfolio-caption-subheading.text-muted Graphic Design
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 3
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal3')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/3.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Finish
-                                .portfolio-caption-subheading.text-muted Identity
-                    .col-lg-4.col-sm-6.mb-4.mb-lg-0
-                        // Portfolio item 4
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal4')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/4.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Lines
-                                .portfolio-caption-subheading.text-muted Branding
-                    .col-lg-4.col-sm-6.mb-4.mb-sm-0
-                        // Portfolio item 5
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal5')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/5.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Southwest
-                                .portfolio-caption-subheading.text-muted Website Design
-                    .col-lg-4.col-sm-6
-                        // Portfolio item 6
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal6')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/6.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Window
-                                .portfolio-caption-subheading.text-muted Photography
-
-        // About
-        section#about.page-section
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase About
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                ul.timeline
-                    li
-                        .timeline-image
-                            img.rounded-circle.img-fluid(src='assets/img/about/1.jpg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4 2009-2011
-                                h4.subheading Our Humble Beginnings
-                            .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
-                    li.timeline-inverted
-                        .timeline-image
-                            img.rounded-circle.img-fluid(src='assets/img/about/2.jpg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4 March 2011
-                                h4.subheading An Agency is Born
-                            .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
-                    li
-                        .timeline-image
-                            img.rounded-circle.img-fluid(src='assets/img/about/3.jpg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4 December 2015
-                                h4.subheading Transition to Full Service
-                            .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
-                    li.timeline-inverted
-                        .timeline-image
-                            img.rounded-circle.img-fluid(src='assets/img/about/4.jpg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4 July 2020
-                                h4.subheading Phase Two Expansion
-                            .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
-                    li.timeline-inverted
-                        .timeline-image
-                            h4
-                                | Be Part
-                                br
-                                | Of Our
-                                br
-                                | Story!
-
-        // Team
-        section#team.page-section.bg-light
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Our Amazing Team
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                .row
-                    .col-lg-4
-                        .team-member
-                            img.mx-auto.rounded-circle(src='assets/img/team/1.jpg', alt='...')
-                            h4 Parveen Anand
-                            p.text-muted Lead Designer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand Twitter Profile')
-                                i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand Facebook Profile')
-                                i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand LinkedIn Profile')
-                                i.fab.fa-linkedin-in
-                    .col-lg-4
-                        .team-member
-                            img.mx-auto.rounded-circle(src='assets/img/team/2.jpg', alt='...')
-                            h4 Diana Petersen
-                            p.text-muted Lead Marketer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen Twitter Profile')
-                                i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen Facebook Profile')
-                                i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen LinkedIn Profile')
-                                i.fab.fa-linkedin-in
-                    .col-lg-4
-                        .team-member
-                            img.mx-auto.rounded-circle(src='assets/img/team/3.jpg', alt='...')
-                            h4 Larry Parker
-                            p.text-muted Lead Developer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Twitter Profile')
-                                i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Facebook Profile')
-                                i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker LinkedIn Profile')
-                                i.fab.fa-linkedin-in
-                .row
-                    .col-lg-8.mx-auto.text-center
-                        p.large.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
-
-        // Clients
-        div.py-5
-            .container
-                .row.align-items-center
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/microsoft.svg', alt='...', aria-label='Microsoft Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/google.svg', alt='...', aria-label='Google Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/facebook.svg', alt='...', aria-label='Facebook Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/ibm.svg', alt='...', aria-label='IBM Logo')
-
-        // Contact
-        section#contact.page-section
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Contact Us
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-
-                // * * * * * * * * * * * * * * *
-                // * * SB Forms Contact Form * *
-                // * * * * * * * * * * * * * * *
-
-                // This form is pre-integrated with SB Forms.
-                // To make this form functional, sign up at
-                // https://startbootstrap.com/solution/contact-forms
-                // to get an API token!
-
-                form#contactForm(data-sb-form-api-token='API_TOKEN')
-                    .row.align-items-stretch.mb-5
-                        .col-md-6
-                            .form-group
-
-                                // Name input
-                                input#name.form-control(
-                                    type='text',
-                                    placeholder='Your Name *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='name:required')
-                                    | A name is required.
-
-                            .form-group
-
-                                // Email address input
-                                input#email.form-control(
-                                    type='email',
-                                    placeholder='Your Email *',
-                                    data-sb-validations='required,email'
-                                )
-                                .invalid-feedback(data-sb-feedback='email:required')
-                                    | An email is required.
-                                .invalid-feedback(data-sb-feedback='email:email')
-                                    | Email is not valid.
-
-                            .form-group.mb-md-0
-
-                                // Phone number input
-                                input#phone.form-control(
-                                    type='tel',
-                                    placeholder='Your Phone *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='phone:required')
-                                    | A phone number is required.
-
-                        .col-md-6
-                            .form-group.form-group-textarea.mb-md-0
-
-                                // Message input
-                                textarea#message.form-control(
-                                    placeholder='Your Message *',
-                                    data-sb-validations='required'
-                                )
-                                .invalid-feedback(data-sb-feedback='message:required')
-                                    | A message is required.
-
-                    // Submit success message
-                    //
-                    // This is what your users will see when the form
-                    // has successfully submitted
-
-                    #submitSuccessMessage.d-none
-                        .text-center.text-white.mb-3
-                            .fw-bolder Form submission successful!
-                            | To activate this form, sign up at
-                            br
-                            a(href='https://startbootstrap.com/solution/contact-forms') https://startbootstrap.com/solution/contact-forms
-
-                    // Submit error message
-                    //
-                    // This is what your users will see when there is
-                    // an error submitting the form
-
-                    #submitErrorMessage.d-none
-                        .text-center.text-danger.mb-3 Error sending message!
-
-                    // Submit Button
-                    .text-center
-                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit') Send Message
-
-        // Footer
-        footer.footer.py-4
-            .container
-                .row.align-items-center
-                    .col-lg-4.text-lg-start
-                        | Copyright &copy; Your Website 2022
-                    .col-lg-4.my-3.my-lg-0
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
-                            i.fab.fa-twitter
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Facebook')
-                            i.fab.fa-facebook-f
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='LinkedIn')
-                            i.fab.fa-linkedin-in
-                    .col-lg-4.text-lg-end
-                        a.link-dark.text-decoration-none.me-3(href='#!') Privacy Policy
-                        a.link-dark.text-decoration-none(href='#!') Terms of Use
-
-        // Portfolio Modals
-        include includes/portfolio-modal-1
-        include includes/portfolio-modal-2
-        include includes/portfolio-modal-3
-        include includes/portfolio-modal-4
-        include includes/portfolio-modal-5
-        include includes/portfolio-modal-6
-
-        // Bootstrap core JS
-        script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js')
-
-        // Core theme JS
-        script(src='js/scripts.js')
-
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-        // * *                               SB Forms JS                               * *
-        // * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
-        // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-        script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title WiCS UCSB
+  // Favicon
+  link(rel='icon' type='image/x-icon' href='assets/favicon.ico')
+  // Font Awesome icons (free version)
+  script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js' crossorigin='anonymous')
+  // Google fonts
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
+  link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css')
+  // Core theme CSS (includes Bootstrap)
+  link(href='css/styles.css' rel='stylesheet')
+// Navigation
+nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
+  .container
+    // <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarResponsive' aria-controls='navbarResponsive' aria-expanded='false' aria-label='Toggle navigation')
+      | Menu
+      i.fas.fa-bars.ms-1
+    #navbarResponsive.collapse.navbar-collapse
+      ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
+        li.nav-item
+          a.nav-link(href='#services') Our Mission
+        li.nav-item
+          a.nav-link(href='#portfolio') Events
+        li.nav-item
+          a.nav-link(href='#about') About
+        li.nav-item
+          a.nav-link(href='#team') Team
+        li.nav-item
+          a.nav-link(href='#contact') Contact
+// Masthead
+header.masthead
+  .container
+    .masthead-subheading Welcome To WiCS-UCSB!
+    .masthead-heading.text-uppercase
+    a.btn.btn-primary.btn-xl.text-uppercase(href='https://forms.gle/LSP2EJx45psbopZZA' target='_blank')
+      | Join
+      | WiCS
+// Services
+section#services.page-section
+  .container
+    .text-center
+      h2.section-heading.text-uppercase Our Mission
+      h3.section-subheading.text-muted
+    .row.text-center
+      .col-md-4
+        span.fa-stack.fa-4x
+          i.fas.fa-circle.fa-stack-2x.text-primary
+          i.fas.fa-bridge.fa-stack-1x.fa-inverse
+        h4.my-3 Bridge Gaps
+        p.text-muted
+          | Foster collaboration and understanding to bridge gender and diversity gaps in the tech industry through our Women in Computer Science club.
+      .col-md-4
+        span.fa-stack.fa-4x
+          i.fas.fa-circle.fa-stack-2x.text-primary
+          i.fas.fa-burst.fa-stack-1x.fa-inverse
+        h4.my-3 Celebrate Diversity
+        p.text-muted
+          | Celebrate diversity and inclusion in the field of technology at UC Santa Barbara.
+      .col-md-4
+        span.fa-stack.fa-4x
+          i.fas.fa-circle.fa-stack-2x.text-primary
+          i.fas.fa-hand-holding-hand.fa-stack-1x.fa-inverse
+        h4.my-3 Build a Community
+        p.text-muted
+          | Create a diverse and inclusive community that fosters collaboration, growth, and mutual support among all members.
+// Portfolio Grid
+section#portfolio.page-section.bg-light
+  .container
+    .text-center
+      h2.section-heading.text-uppercase Events
+      h3.section-subheading.text-muted
+    .row
+      .col-lg-4.col-sm-6.mb-4
+        // Intern Panel 2023
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#internpanel2023')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/intern-panel-2023.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Intern Panel
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Resume Linkedin Simplify Workshop 2023
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#resumeworkshop2023')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/resume-linkedin-simplify-workshop-2023.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Resume, Linkedin, &amp; Simplify Workshop
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Susana HS Outreach 2023
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#susanahsoutreach2023')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/susana-hs-outreach-2023.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Susana High School Outreach
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Carlos Broderick Workshop 2023
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#carlosworkshop2023')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/carlos-workshop-2023.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Prompt Engineering Workshop
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // WiCS Welcome Dinner 2023
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#welcomedinner2023')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/welcome-dinner-2023.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading WiCS Welcome Dinner 2023
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // GWC & WICS social collab
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#gwccolab')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/1gwcWics.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading GWC &amp; WICS Social
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Unity X wics game dev workshop
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#gamedevworkshop')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/2gameDev.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Game Dev Workshop
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Hike with Prof
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#hikewithprof')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/3hikeWdProf.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Hike with Professor
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // ERSP winter
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#erspwinter')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/4erspWinter.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading ERSP Q&amp;A
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Spring Social
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#springsocial')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/5springSocial.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Spring Social
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Study Social
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#studysocial')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/6studySocial.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Study Social
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Tech Networking Social
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#technetwork')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/7techNetwork.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Tech Networking Social
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Grad Research Tell
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#gradresearch')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/8gradResearch.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Grad Research Show &amp; Tell
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Job Workshop
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#jobworkshop')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/9jobWorkshop.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Job Hunt Workshop
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Movie Night
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#movienight')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/11movieNight.png' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Movie Night
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Welcome Dinner
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal0')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/welcome-dinner.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Fall Welcome Dinner
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Portfolio item 1
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal1')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/1.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Build an AI Chatbot Workshop
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Portfolio item 2
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal2')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/2.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Industry Panel
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4
+        // Portfolio item 3
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal3')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/3.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading ERSP Q&amp;A
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4.mb-lg-0
+        // Portfolio item 4
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal4')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/4.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Bigs &amp; Littles Mentorship Program
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6.mb-4.mb-sm-0
+        // Portfolio item 5
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal5')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/5.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading WiCS Spring Social
+            .portfolio-caption-subheading.text-muted
+      .col-lg-4.col-sm-6
+        // Portfolio item 6
+        .portfolio-item
+          a.portfolio-link(data-bs-toggle='modal' href='#portfolioModal6')
+            .portfolio-hover
+              .portfolio-hover-content
+                i.fas.fa-plus.fa-3x
+            img.img-fluid(src='assets/img/portfolio/6.jpg' alt='...')
+          .portfolio-caption
+            .portfolio-caption-heading Spring into WiCS
+            .portfolio-caption-subheading.text-muted
+// About
+section#about.page-section
+  .container
+    .text-center
+      h2.section-heading.text-uppercase Our Community
+      h3.section-subheading.text-muted When you join WiCS, you join a community.
+    ul.timeline
+      li
+        .timeline-image
+          img.rounded-circle.img-fluid(src='assets/img/about/1.jpg' alt='...')
+        .timeline-panel
+          .timeline-heading
+            h4
+            h4.subheading WiCS&apos; Fall Welcome Dinner
+          .timeline-body
+            p.text-muted
+              | Our annual welcome dinner to learn about WiCS, meet other students, WiCS officers, and CS faculty.
+      li.timeline-inverted
+        .timeline-image
+          img.rounded-circle.img-fluid(src='assets/img/about/2.jpg' alt='...')
+        .timeline-panel
+          .timeline-heading
+            h4
+            h4.subheading First Social of the Year!
+          .timeline-body
+            p.text-muted
+              | In our first social, we cultivate a tight-knit community and members grow closer through fun games and snacks.
+      li
+        .timeline-image
+          img.rounded-circle.img-fluid(src='assets/img/about/3.jpg' alt='...')
+        .timeline-panel
+          .timeline-heading
+            h4
+            h4.subheading Q&amp;A for ERSP
+          .timeline-body
+            p.text-muted
+              | A panel of previous ERSP alumni shared their experiences with getting involved in undergrad resarch on campus through the program.
+      li.timeline-inverted
+        .timeline-image
+          img.rounded-circle.img-fluid(src='assets/img/about/4.jpg' alt='...')
+        .timeline-panel
+          .timeline-heading
+            h4
+            h4.subheading Grace Hopper Conference
+          .timeline-body
+            p.text-muted
+              | In partnership with the CS Department, WiCS provided scholarships for students to attend the Grace Hopper Conference!
+      li.timeline-inverted
+        a(href='https://docs.google.com/forms/d/e/1FAIpQLSdzYj-ncF9mRKTo3SwVXqoNsOMkV67U85URtjlN0FaH9GWCKQ/viewform' target='_blank')
+          #btn-join.timeline-image
+            h4
+              | Join our 
+              br
+              |                             community
+              br
+              |                             today!
+// Team
+section#team.page-section.bg-light
+  .container
+    .text-center
+      h2.section-heading.text-uppercase Meet our officers
+      h3.section-subheading.text-muted
+    .row
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/prof-k.png' alt='...')
+          h4 Professor Yekaterina Kharitonova
+          p.text-muted Advisor
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: ykk@cs.ucsb.edu' aria-label='Prof Kharitonova Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/calais-wics.png' alt='...')
+          h4 Calais Waring
+          p.text-muted Co-President
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: calais@ucsb.edu' aria-label='Calais Waring Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/karen-wics.png' alt='...')
+          h4 Karen Yuan
+          p.text-muted Co-President
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: karenyuan@ucsb.edu' aria-label='Karen Yuan Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/prisha-wics-treasurer.JPG' alt='...')
+          h4 Prisha Bobde
+          p.text-muted Treasurer
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: prishabobde@ucsb.edu' aria-label='Prisha Bobde Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/raina-wics-community.png' alt='...')
+          h4 Raina Kakani
+          p.text-muted VP Community
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: rkakani@ucsb.edu' aria-label="Raina Kakani's Email")
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/laboni-edited.png' alt='...')
+          h4 Laboni Sarker
+          p.text-muted VP Technical Activities
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: labonisarker@ucsb.edu' aria-label='Laboni Sarker Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/anushka-edited.png' alt='...')
+          h4 Anushka Vijay
+          p.text-muted VP Research
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: anushkavijay@ucsb.edu' aria-label='Anushka Vijay Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/emma-wics-outreach.jpg' alt='...')
+          h4 Emma Nguyen
+          p.text-muted VP Outreach
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: etnguyen@ucsb.edu' aria-label='Emma Nguyen Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/grace-wics.JPG' alt='...')
+          h4 Grace Feng
+          p.text-muted VP Public Relations
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: gracefeng@ucsb.edu' aria-label='Grace Feng Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/sammy-wics-diversity-chair.jpg' alt='...')
+          h4 Samantha Lesner
+          p.text-muted Diversity Chair
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: samanthalesner@ucsb.edu' aria-label='Samantha Lesner Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/default.jpg' alt='...')
+          h4 Divya Subramonian
+          p.text-muted Director Community
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: divyasubramonian@ucsb.edu' aria-label='Divya Subramonian Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/varsha-wics-tech.png' alt='...')
+          h4 Varsha Narasiman
+          p.text-muted Director Technical Activities
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: vnarasiman@ucsb.edu' aria-label='Varsha Narasiman Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/default.jpg' alt='...')
+          h4 Riona Pampati
+          p.text-muted Director Outreach
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: riona@ucsb.edu' aria-label='Riona Pampati Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/default.jpg' alt='...')
+          h4 Maya Trieu
+          p.text-muted Director Public Relations
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: mayatrieu@ucsb.edu' aria-label='Maya Trieu Email')
+            i.fab.fa-solid.fa-envelope
+      .col-lg-4
+        .team-member
+          img.mx-auto.rounded-circle(src='assets/img/team/Pranjali_graduate_representative.jpeg' alt='...')
+          h4 Pranjali Jain
+          p.text-muted Grad Representative
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: pranjali_jain@ucsb.edu' aria-label='Pranjali Jain Email')
+            i.fab.fa-solid.fa-envelope
+// Alumni
+section#team.page-section.bg-light
+  .container
+    .text-center
+      h2.section-heading.text-uppercase Alumni
+      h3.section-subheading.text-muted
+    .row
+      .col-lg-8.mx-auto
+        ul.alumni-list
+          li.alumni-item
+            strong Vaishnavi Himakunthala,
+            | Co-President
+          li.alumni-item
+            strong Liliana Nguyen,
+            | Co-President
+          li.alumni-item
+            strong Anushka Vijay,
+            | VP Operations
+          li.alumni-item
+            strong Palvi Sabherwal,
+            | VP Finance
+          li.alumni-item
+            strong Raina Kakani,
+            | VP Community
+          li.alumni-item
+            strong Laboni Sarker,
+            | VP Technical Activities
+          li.alumni-item
+            strong Radha Kumaram,
+            | VP Research
+          li.alumni-item
+            strong Shamita Gurusu,
+            | VP Outreach
+          li.alumni-item
+            strong Isabella Ward,
+            | Director Finance
+    .row
+      .col-lg-8.mx-auto.text-center
+        p.large.text-muted
+// Clients
+//
+  <div class="py-5">
+  <div class="container">
+  <div class="row align-items-center">
+  <div class="col-md-3 col-sm-6 my-3">
+  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg"
+  alt="..." aria-label="Microsoft Logo" /></a>
+  </div>
+  <div class="col-md-3 col-sm-6 my-3">
+  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg"
+  alt="..." aria-label="Google Logo" /></a>
+  </div>
+  <div class="col-md-3 col-sm-6 my-3">
+  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg"
+  alt="..." aria-label="Facebook Logo" /></a>
+  </div>
+  <div class="col-md-3 col-sm-6 my-3">
+  <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg"
+  alt="..." aria-label="IBM Logo" /></a>
+  </div>
+  </div>
+  </div>
+  </div>
+// Contact
+//
+  -
+  <section class="page-section" id="contact">
+  <div class="container">
+  <div class="text-center">
+  <h2 class="section-heading text-uppercase">Contact Us</h2>
+  <h3 class="section-subheading text-muted"></h3>
+  </div>
+// * * * * * * * * * * * * * * *
+// * * SB Forms Contact Form * *
+// * * * * * * * * * * * * * * *
+// This form is pre-integrated with SB Forms.
+// To make this form functional, sign up at
+// https://startbootstrap.com/solution/contact-forms
+// to get an API token!
+//
+  -
+  <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+  <div class="row align-items-stretch mb-5">
+  <div class="col-md-6">
+  <div class="form-group">
+// Name input
+//
+  -
+  <input class="form-control" id="name" type="text" placeholder="Your Name *"
+  data-sb-validations="required" />
+  <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+  </div>
+  <div class="form-group">
+// Email address input
+//
+  <input class="form-control" id="email" type="email" placeholder="Your Email *"
+  data-sb-validations="required,email" />
+  <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
+  <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
+  </div>
+  <div class="form-group mb-md-0">
+// Phone number input
+//
+  <input class="form-control" id="phone" type="tel" placeholder="Your Phone *"
+  data-sb-validations="required" />
+  <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.
+  </div>
+  </div>
+  </div>
+  <div class="col-md-6">
+  <div class="form-group form-group-textarea mb-md-0">
+// Message input
+//
+  <textarea class="form-control" id="message" placeholder="Your Message *"
+  data-sb-validations="required"></textarea>
+  <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.
+  </div>
+  </div>
+  </div>
+  </div>
+// Submit success message
+// 
+// This is what your users will see when the form
+// has successfully submitted
+//
+  <div class="d-none" id="submitSuccessMessage">
+  <div class="text-center text-white mb-3">
+  <div class="fw-bolder">Form submission successful!</div>
+  To activate this form, sign up at
+  <br />
+  <a
+  href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+  </div>
+  </div>
+// Submit error message
+// 
+// This is what your users will see when there is
+// an error submitting the form
+//
+  <div class="d-none" id="submitErrorMessage">
+  <div class="text-center text-danger mb-3">Error sending message!</div>
+  </div>
+// Submit Button
+//
+  <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
+  id="submitButton" type="submit">Send Message</button></div>
+  </form>
+  </div>
+  </section>
+// Footer
+section#contact.page-section
+  footer.footer.py-4
+    .container
+      .row.align-items-center
+        .col-lg-4.text-lg-start Copyright &copy; WiCS-UCSB 2022
+        .col-lg-4.my-3.my-lg-0
+          a.btn.btn-dark.btn-social.mx-2(href='https://www.instagram.com/ucsb_wics/?hl=en' aria-label='Instagram')
+            i.fab.fa-instagram
+          //
+            <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/ucsbwics/" aria-label="Facebook"><i
+            class="fab fa-facebook-f"></i></a>
+          a.btn.btn-dark.btn-social.mx-2(href='https://discord.com/invite/yXm4WMWmBh' aria-label='Discord')
+            i.fab.fa-discord
+          a.btn.btn-dark.btn-social.mx-2(href='mailto: ucsb.wics@gmail.com' aria-label='email')
+            i.fab.fa-solid.fa-envelope
+        .col-lg-4.text-lg-end
+          a.link-dark.text-decoration-none.me-3(href='#!')
+          a.link-dark.text-decoration-none(href='#!')
+// Portfolio Modals
+// Newly added start
+// Intern Panel 2023 Popup
+#internpanel2023.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Intern Panel
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/resume-linkedin-simplify-workshop-2023.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join us for a complete workshop going over resume and Linkedin tips and how to use Simplify!
+              p
+                | Information 
+                br
+                | Date: November 20, 2023 
+                br
+                | Time: 6:30pm-7:30pm 
+                br
+                | Location: Phelps 2510 
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Resume Linkedin Simplify Workshop Popup
+#resumeworkshop2023.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Resume, Linkedin, &amp; Simplify Workshop
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/resume-linkedin-simplify-workshop-2023.png' alt='...')
+              p
+                | Hello everyone!
+                | Gain valuable insights about internships and the recruiting process from students who&rsquo;ve recently completed them! Get your questions answered!
+              p
+                | Information 
+                br
+                | Date: November 30, 2023 
+                br
+                | Time: 4:00pm-5:30pm 
+                br
+                | Location: Harold Frank Hall 1132 
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Susana HS Outreach Popup
+#susanahsoutreach2023.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Susana High School Outreach
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/carlos-workshop-2023.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join us in chatting with Susana HS students looking to pursue STEM and CS!
+              p
+                | Information 
+                br
+                | Date: November 15, 2023 
+                br
+                | Location: Santa Susana High School 
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Carlos Workshop Popup
+#carlosworkshop2023.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Carlos Broderick Workshop
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/carlos-workshop-2023.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join us for a workshop on Polyglot Prompt Engineering for Data Visualization with Carlos Broderick!
+              p
+                | Information 
+                br
+                | Date: October 24, 2023 
+                br
+                | Time: 6:30pm-7:30pm 
+                br
+                | Location: Harold Frank Hall 1132 
+                br
+                | Join for lovely evening!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio WiCS Welcome Dinner 2023 Popup
+#welcomedinner2023.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase WiCS Welcome Dinner 2023
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/welcome-dinner-2023.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join us for a WiCS welcome back dinner!
+              p
+                | Information 
+                br
+                | Date: October 19, 2023 
+                br
+                | Time: 6:00pm-8:00pm 
+                br
+                | Location: Alumni Hall &amp; Mellichamp Terrace, Mosher Alumni House 
+                br
+                | Join for lovely social evening!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio GWC & WICS Social Collad Popup
+#gwccolab.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Gwc &amp; Wics Social
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/1gwcWics.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for GWC &amp; WICS Social Collab.
+              p
+                | Information 
+                br
+                | Date: May 23, 2023 
+                br
+                | Time: 6:00pm-7:30pm (you are free to come at any time) 
+                br
+                | Location: Manzi Picnic Tables 
+                br
+                | Join for lovely social evening!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Game Dev Workshop Popup
+#gamedevworkshop.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Game Dev Workshop
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/2gameDev.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for Game Dev Workshop.
+              p
+                | Information 
+                br
+                | Date: May 9, 2023 
+                br
+                | Time: 6:00pm-7:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 and zoom
+                br
+                | Join for a hands-on game development workshop.
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Hike with professor Popup
+#hikewithprof.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Hike with Prof
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/3hikeWdProf.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for hiking with Prof. Jonathan Balkind.
+              p
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio ERSP Q & A Winter Popup
+#erspwinter.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase ERSP Q&amp;A
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/4erspWinter.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the ERSP Q&amp;A.
+              p
+                | Information 
+                br
+                | Date: May 2, 2023 
+                br
+                | Time: 6:00pm-7:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 
+                br
+                | Join for learning about ERSP program from the experienced panelists!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Spring Social Popup
+#springsocial.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Spring Social
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/5springSocial.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the Spring Social.
+              p
+                | Information 
+                br
+                | Date: April 13, 2023 
+                br
+                | Time: 4:00pm-6:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 
+                br
+                | Join for fun filled social!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Study Social Popup
+#studysocial.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Study Social
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/6studySocial.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the Study Social.
+              p
+                | Information 
+                br
+                | Date: March 9, 2023 
+                br
+                | Time: 7:00pm-10:00pm (you are free to come at any time) 
+                br
+                | Location: SRB MPR 
+                br
+                | Join for fun night of group studying and study help!
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Tech Network Popup
+#technetwork.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Tech Networking Social
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/7techNetwork.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the Tech Networking Social.
+              p
+                | Information 
+                br
+                | Date: March 3, 2023 
+                br
+                | Time: 6:00pm-8:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 
+                br
+                | Networking opportunities 
+                br
+                | Free professional headshots, resume reviews &amp; food 
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio grad research Popup
+#gradresearch.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Grad Research Show &amp; Tell
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/8gradResearch.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the Grad Research Show &amp; Tell.
+              p
+                | Information 
+                br
+                | Date: March 2, 2023 
+                br
+                | Time: 6:00pm 
+                br
+                | Location: HFH 1132 
+                br
+                | Learn about Machine Learning, AI, Theory, &amp;, Mixed Reality 
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio job worksop Popup
+#jobworkshop.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Job Hunt Workshop
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/9jobWorkshop.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the Job Hunt Workshop.
+              p
+                | Information 
+                br
+                | Date: February 24, 2023 
+                br
+                | Time: 3:00pm-4:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 
+                br
+                | Presenter: Harsha Vardhyan Miryala 
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Portfolio Movie Night Popup
+#movienight.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Movie Night
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/11movieNight.png' alt='...')
+              p
+                | Hello everyone!
+                | Please join for the movie night.
+              p
+                | Information 
+                br
+                | Date: January 1 
+                br
+                | Time: 6:00pm-8:00pm (you are free to come at any time) 
+                br
+                | Location: HFH 1132 
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                 Close
+// Newly added end
+// Portfolio Welcome Dinner Popup
+#portfolioModal0.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Fall Welcome Dinner
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/welcome-dinner.jpg' alt='...')
+              p
+                | Hello everyone!
+                | We will be hosting a welcome dinner to celebrate the new year, give you all a chance to meet each other and the CS faculty, and learn more about WiCS.  This will be an awesome event to meet new people and enjoy good food.  We sincerely invite all majors and genders to join us!  Please 
+                a(href='https://forms.gle/YYyT9qevfPhRKSKRA' target='_blank')  RSVP 
+                |  to give us a headcount.
+              p
+                | Information 
+                br
+                | Date: October 6 
+                br
+                | Time: 5:00pm-7:00pm (you are free to come at any time) 
+                br
+                | Location: SRB Multi-Purpose Room 
+                br
+                | No dress code :) 
+                br
+                br
+                | We hope to see you all there!
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 1 modal popup
+#portfolioModal1.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Build an AI Chatbot Workshop
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/1.jpg' alt='...')
+              p
+                | Bring your laptops and come join us to learn how to build an AI chatbot, taught by
+                | Michael Saxon and Liubov Kurafeeva. We look forward to see you all there! All majors
+                | and genders are welcome :)
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 2 modal popup
+#portfolioModal2.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Conversations about Diversity in Computer Science
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/2.jpg' alt='...')
+              p
+                | Come join the conversation with panelists, Rita Mounir from Allthenticate, Ishana
+                | Narayanan an incoming SWE at Google, Lenka Keston from Appfolio, and Alexis Cole
+                | from Amazon on the current state of diversity in Computer Science Education and
+                | Industry, how it affects minorities, and how we can make it better. We will also be
+                | having an open floor session where everyone can pitch in their thoughts and ideas.
+                | All majors and genders are welcome:)
+              ul.list-inline
+                li
+                  strong When:
+                  |                                         Thursday, May 26th @ 5:30-6:30 PM
+                li
+                  strong Where:
+                  |                                         HFH 1132
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 3 modal popup
+#portfolioModal3.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase ERSP Q&amp;A
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/3.jpg' alt='...')
+              p
+                | Come join us to learn more about the Early Research Scholars Program, a first-time
+                | computer science research experience for undergraduates. Previous and current
+                | participants in the program will be present to talk about their experience and
+                | answer your questions. Snacks will also be provided! All majors and genders are
+                | welcome:)
+              ul.list-inline
+                li
+                  strong When:
+                  |                                         Thursday, April 14th @ 5:00pm-6:00pm
+                li
+                  strong Where:
+                  |                                         HFH 1132
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 4 modal popup
+#portfolioModal4.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Bigs and Littles
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/4.jpg' alt='...')
+              p
+              ul.list-inline
+                a(href='https://docs.google.com/forms/d/e/1FAIpQLSf7Xarje8sXWw3vwMOUj1n-9XNQK_6MS5ojEFaDlOTlqifpTQ/viewform')
+                  button.btn.btn-primary.btn-xl.text-uppercase(type='button')
+                    | Sign Up
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 5 modal popup
+#portfolioModal5.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase WiCS Spring Social
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/5.jpg' alt='...')
+              p
+                | Come join WiCS at our second social event of the quarter. We&apos;ll be socializing,
+                | playing games, and eating food! We look forward to seeing all of you.
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Portfolio item 6 modal popup
+#portfolioModal6.portfolio-modal.modal.fade(tabindex='-1' role='dialog' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .close-modal(data-bs-dismiss='modal')
+        img(src='assets/img/close-icon.svg' alt='Close modal')
+      .container
+        .row.justify-content-center
+          .col-lg-8
+            .modal-body
+              // Project details
+              h2.text-uppercase Spring into WiCS
+              p.item-intro.text-muted
+              img.img-fluid.d-block.mx-auto(src='assets/img/portfolio/6.jpg' alt='...')
+              p
+                | Come join WiCS at our first social event of the year. We&apos;ll be socializing, playing
+                | games, and eating food! We look forward to seeing all of you.
+              ul.list-inline
+                li
+                  strong
+                li
+                  strong
+              button.btn.btn-primary.btn-xl.text-uppercase(data-bs-dismiss='modal' type='button')
+                i.fas.fa-xmark.me-1
+                |                                     Close
+// Bootstrap core JS
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js')
+// Core theme JS
+script(src='js/scripts.js')
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+// * *                               SB Forms JS                               * *
+// * * Activate your form at https://startbootstrap.com/solution/contact-forms * *
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')

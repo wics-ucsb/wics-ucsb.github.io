@@ -10,6 +10,7 @@
         width: 14rem;
         height: 14rem;
         border: 0.5rem solid fade-out($black, 0.9);
+        object-fit: cover;
     }
 
     h4 {
@@ -22,3 +23,25 @@
 .img-brand {
     height: 2.75rem;
 }
+
+.alumni-list {
+    list-style-type: disc; // Keeps the default bullet style
+    padding-left: 20px; // Adds indentation for the bullets
+    margin: 0;
+  }
+  
+  .alumni-item {
+    margin-bottom: 0; // No space between items
+    font-size: 1rem; // Regular font size
+    color: #333; // Dark color for text
+  
+    strong {
+      color: #a895f1; // Blue color for the alumni's name
+      font-weight: bold;
+    }
+  
+    &:not(:last-child) {
+      margin-bottom: 0; // No extra space between items
+    }
+  }
+  
