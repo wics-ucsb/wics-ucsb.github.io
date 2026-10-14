@@ -69,61 +69,56 @@ export default function Calendar({ events }: CalendarProps) {
   };
 
   return (
-    <div ref={containerRef} className="relative w-full max-w-7xl mx-auto">
+    <div ref={containerRef} className="relative w-full max-w-5xl mx-auto">
       {/* Month navigation */}
       <div className="flex items-center justify-between mb-6">
         <button onClick={goToPrevMonth} className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
           <ChevronLeft size={22} />
         </button>
-        <h3 className="font-display font-semibold text-2xl text-[#334c96]">{monthLabel}</h3>
+        <h3 className="font-display font-semibold text-xl text-[#334c96]">{monthLabel}</h3>
         <button onClick={goToNextMonth} className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
           <ChevronRight size={22} />
         </button>
       </div>
 
       {/* Weekday labels */}
-      <div className="grid grid-cols-7 text-center md:text-xl text-lg font-bold text-[#6e4479] mb-2">
+      <div className="grid grid-cols-7 text-center md:text-lg text-lg font-bold text-[#6e4479] mb-2">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d}>{d}</div>
         ))}
       </div>
 
       <div className="grid grid-cols-7 gap-1.5">
-        {Array.from({ length: firstDayOfMonth }).map((_, i) => (
-          <div key={`empty-${i}`} className="aspect-square" />
-        ))}
+  {Array.from({ length: daysInMonth }).map((_, i) => {
+    const day = i + 1;
+    const dateStr = toDateStr(day);
+    const dayEvents = eventsByDate[dateStr] ?? [];
 
-        {Array.from({ length: daysInMonth }).map((_, i) => {
-          const day = i + 1;
-          const dateStr = toDateStr(day);
-          const dayEvents = eventsByDate[dateStr] ?? [];
-
-          return (
-            <div
-              key={day}
-              className="aspect-square w-full rounded-lg border border-gray-100 p-1.5 flex flex-col gap-1 bg-white/60"
+    return (
+      <div
+        key={day}
+        style={day === 1 ? { gridColumnStart: firstDayOfMonth + 1 } : undefined}
+        className="aspect-square md:aspect-[4/3] w-full overflow-hidden rounded-lg border border-gray-100 p-1.5 flex flex-col gap-1 bg-white/60"
+      >
+        <span className="md:text-xl text-md text-gray-700">{day}</span>
+        <div className="flex flex-col gap-1 overflow-hidden">
+          {dayEvents.slice(0, 3).map((event) => (
+            <button key={event.id} onClick={(e) => handleEventClick(event, e)}
+              className={`text-left text-[11px] md:text-sm font-bold leading-tight px-1.5 py-1 rounded-md truncate transition-colors ${
+              selectedEvent?.id === event.id
+                ? "bg-[#334c96] text-white"
+                : "bg-[#dccce1]/80 text-[#334c96] hover:bg-[#334c96] hover:text-white"
+              }`}
             >
-              <span className="md:text-xl text-md text-gray-700">{day}</span>
-              <div className="flex flex-col gap-1 overflow-hidden">
-                {dayEvents.slice(0, 3).map((event) => (
-                  <button
-                    key={event.id}
-                    onClick={(e) => handleEventClick(event, e)}
-                    className={`text-left text-[11px] md:text-xs leading-tight px-1.5 py-1 rounded-md truncate transition-colors ${
-                      selectedEvent?.id === event.id
-                        ? "bg-[#334c96] text-white"
-                        : "bg-[#dccce1]/60 text-[#334c96] hover:bg-[#334c96] hover:text-white"
-                    }`}
-                  >
-                    {event.title}
-                  </button>
-                ))}
-                {dayEvents.length > 3 && (
-                  <span className="text-[10px] text-gray-400 px-1.5">
-                    +{dayEvents.length - 3} more
+              {event.title}
+            </button>
+            ))}
+            {dayEvents.length > 3 && (
+              <span className="text-[10px] text-gray-400 px-1.5">
+                +{dayEvents.length - 3} more
                   </span>
-                )}
-              </div>
+            )}
+            </div>
             </div>
           );
         })}
