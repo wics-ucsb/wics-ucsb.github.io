@@ -46,7 +46,10 @@ export async function fetchGoogleCalendarEvents(): Promise<CalendarEvent[]> {
     { next: { revalidate: 300 } } // re-fetch at most every 5 min
   );
 
-  if (!res.ok) throw new Error(`Google Calendar fetch failed: ${res.statusText}`);
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`Google Calendar fetch failed: ${res.status} ${res.statusText} - ${body}`);
+  }
 
   const data = await res.json();
   const items: GoogleApiEvent[] = data.items ?? [];
