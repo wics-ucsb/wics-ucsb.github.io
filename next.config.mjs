@@ -6,7 +6,7 @@ const nextConfig = {
     unoptimized: true, 
   },
   // If you plan to deploy to GitHub Pages later, you might need:
-  // output: 'export',
+  output: 'export',
 };
 
 export default nextConfig;
