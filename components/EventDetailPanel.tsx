@@ -12,13 +12,6 @@ export default function EventDetailPanel({
 }) {
   return (
     <div className="relative">
-      <button
-        onClick={onClose}
-        className="absolute top-0 right-0 text-gray-400 hover:text-gray-600"
-      >
-        <X size={18} />
-      </button>
-
       {event.flyerUrl && (<img src={event.flyerUrl} alt={event.title}
             className="w-full h-40 object-cover rounded-xl mb-4" referrerPolicy="no-referrer" />
       )}

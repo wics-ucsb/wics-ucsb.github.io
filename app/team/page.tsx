@@ -1,13 +1,26 @@
 "use client";
-import { useState } from "react";
+import Carousel from "@/components/Carousel";
 import React from "react";
 import Footer from "@/components/Footer";
 import { teamMembers, alumniList } from "@/data/team";
+import { teamContent } from "@/data/content";
 import { Mail } from "lucide-react";
 import Image from "next/image";
 
 export default function HomePage() {
   const splitIndex = Math.ceil(alumniList.length / 3);
+
+  const slides = teamContent.slides.map((src, i) => {
+    return (
+      <div key={i} className="relative w-full h-full">
+        <img
+          src={src}
+          alt={`${teamContent.title}`}
+          className="object-cover rounded-2xl shadow-md"
+        />
+      </div>
+    );
+  });
 
   return (
     <main className="flex flex-col min-h-screen">
@@ -15,9 +28,14 @@ export default function HomePage() {
       <section className="w-full py-16 px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="font-display font-bold text-3xl mb-10 text-[#334c96]">
+            Who We Are
+          </h2>
+          <Carousel slides={slides} autoPlayInterval={3000} />
+
+          {/* Team Grid Section */}
+          <h2 className="mt-[15vh] font-display font-bold text-3xl mb-10 text-[#334c96]">
             Meet the Team!
           </h2>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {teamMembers.map((member) => (
               <div

@@ -1,5 +1,4 @@
 import Footer from "@/components/Footer";
-import WhyJoin from "@/components/WhyJoin";
 import { Users, Mail, ArrowRight, Handshake } from "lucide-react";
 
 const SHORELINE_URL = "https://shoreline.ucsb.edu/WiCS/club_signup";   // your WiCS Shoreline page
@@ -7,7 +6,7 @@ const CLUB_EMAIL = "ucsb.wics@gmail.com";                  // your club email
 const SPONSOR_URL = "https://tinyurl.com/sponsor-wics";          // sponsor interest form / info
 const SPONSOR_QR = "/images/wics-sponsor-qr.png";      // needs its own QR image
 
-const introSubject = "Hi WiCS! Introduction";
+const introSubject = "WiCS New Member Introduction!";
 const introBody = `Hi WiCS team,
 
 Excited to meet you! I am [your name], and I'm a [year] studying [major] at UCSB.
@@ -32,7 +31,6 @@ const links = [
 export default function EngagePage() {
   return (
     <main className="flex flex-col min-h-screen max-w-full">
-      <WhyJoin compact />
 
       {/* Join / stay updated */}
       <section id="join" className="scroll-mt-24 w-full px-6 py-16 text-center">

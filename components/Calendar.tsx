@@ -2,19 +2,23 @@
 import { useState, useMemo, useRef } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { CalendarEvent } from "@/data/events";
+import { useLiveEvents } from "@/lib/useLiveEvents";
 import EventDetailPanel from "./EventDetailPanel";
 
 interface CalendarProps {
-  events: CalendarEvent[];
+  initialEvents: CalendarEvent[];
 }
 
-const PANEL_WIDTH = 340; // px
+const PANEL_MIN = 280; // px
+const PANEL_MAX = 380; // px
 
-export default function Calendar({ events }: CalendarProps) {
+export default function Calendar({ initialEvents }: CalendarProps) {
+  const events = useLiveEvents(initialEvents);
+
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const [selectedDay, setSelectedDay] = useState<string | null>(null); // mobile day list
-  const [panelPosition, setPanelPosition] = useState<{ top: number; left: number } | null>(null);
+  const [panelPosition, setPanelPosition] = useState<{ top: number; left: number; width: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const eventsByDate = useMemo(() => {
@@ -48,10 +52,19 @@ export default function Calendar({ events }: CalendarProps) {
     : "";
 
   const handleEventClick = (event: CalendarEvent, e: React.MouseEvent<HTMLButtonElement>) => {
+    // Clicking the already-open event toggles it closed
+    if (selectedEvent?.id === event.id) {
+      closePanel();
+      return;
+    }
+
     const container = containerRef.current;
     if (container) {
       const containerRect = container.getBoundingClientRect();
       const tileRect = e.currentTarget.getBoundingClientRect();
+
+      // ~35% of the calendar's width, kept between the min and max
+      const width = Math.round(Math.min(PANEL_MAX, Math.max(PANEL_MIN, containerRect.width * 0.35)));
 
       let left = tileRect.right - containerRect.left + 12;
       const top = Math.max(
@@ -59,13 +72,14 @@ export default function Calendar({ events }: CalendarProps) {
         Math.min(tileRect.top - containerRect.top, containerRect.height - 320)
       );
 
-      const maxLeft = containerRect.width - PANEL_WIDTH;
+      // If it would overflow the right edge, flip to the tile's left side instead
+      const maxLeft = containerRect.width - width;
       if (left > maxLeft) {
-        left = tileRect.left - containerRect.left - PANEL_WIDTH - 12;
+        left = tileRect.left - containerRect.left - width - 12;
       }
       left = Math.max(0, Math.min(left, maxLeft));
 
-      setPanelPosition({ top, left });
+      setPanelPosition({ top, left, width });
     }
     setSelectedEvent(event);
   };
@@ -167,9 +181,6 @@ export default function Calendar({ events }: CalendarProps) {
           >
             <div className="flex items-start justify-between mb-4">
               <h4 className="font-display font-bold text-xl text-[#334c96] pr-4">{sheetLabel}</h4>
-              <button onClick={() => setSelectedDay(null)} aria-label="Close" className="text-gray-400 hover:text-gray-600">
-                <X size={18} />
-              </button>
             </div>
             <div className="flex flex-col gap-2">
               {sheetEvents.map((event) => (
@@ -197,8 +208,8 @@ export default function Calendar({ events }: CalendarProps) {
       {/* Desktop popover panel */}
       {selectedEvent && panelPosition && (
         <div
-          className="hidden lg:block absolute z-30 bg-white rounded-2xl shadow-xl p-6"
-          style={{ top: panelPosition.top, left: panelPosition.left, width: PANEL_WIDTH }}
+          className="hidden lg:block absolute z-30 bg-white rounded-2xl shadow-xl p-6 max-h-[70vh] overflow-y-auto"
+          style={{ top: panelPosition.top, left: panelPosition.left, width: panelPosition.width }}
         >
           <EventDetailPanel event={selectedEvent} onClose={closePanel} />
         </div>

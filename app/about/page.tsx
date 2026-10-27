@@ -12,7 +12,7 @@ const impactStats = [
 
 const generalMeetings = {
   when: "Wednesdays at 6:00 - 7:00 PM",
-  detail: "Our events are weekly on Wednesdays. Everyone is welcome!",
+  detail: "Our events are weekly on Wednesdays. Everyone is welcome to attend regardless of gender, year, major, or ability!",
 };
 
 const initiatives = [

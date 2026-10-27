@@ -19,15 +19,14 @@ export default function NewsPreview({ initialEvents }: { initialEvents: Calendar
   return (
     <section className="w-full px-6 py-16">
       <div className="max-w-5xl mx-auto text-center">
-        <h2 className="font-display font-bold text-3xl mb-3 text-[#334c96]">WiCS News</h2>
-        <p className="mb-10 text-lg text-[#6e4479]">Find out what we&apos;ve been up to lately.</p>
+        <h2 className="font-display font-bold text-3xl mb-3 text-[#334c96]">Find out what we&apos;ve been up to lately</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
           {events.map((event) => (
             <Link
               key={event.id}
               href="/events"
-              className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-foreground border-[#334c96] transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               {event.flyerUrl && (
                 <img

@@ -1,4 +1,7 @@
+"use client";
 import type { CalendarEvent } from "@/data/events";
+import { useLiveEvents } from "@/lib/useLiveEvents";
+import { latestEvents } from "@/lib/eventHelpers";
 
 const dateLabel = (d: string) => {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(d ?? "")) {
@@ -25,16 +28,18 @@ const dateLabel = (d: string) => {
 };
 
 export default function FlyerGallery({
-  events,
+  initialEvents,
 }: {
-  events: CalendarEvent[];
+  initialEvents: CalendarEvent[];
 }) {
+  const events = latestEvents(useLiveEvents(initialEvents), 8);
+
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-10 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
       {events.map((event, i) => (
         <div
           key={event.id}
-          className={`relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#dccce1]/40 shadow-md ${
+          className={`relative aspect-[4/5] overflow-hidden rounded-2xl border-2 border-[#334c96] shadow-[0_8px_24px_rgba(51,76,150,0.35)] ${
             i >= 6
               ? "hidden lg:block"
               : i >= 4
@@ -62,7 +67,7 @@ export default function FlyerGallery({
           )}
 
           <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#334c96]/90 to-transparent p-3 pt-10">
-            <p className="text-xs font-semibold uppercase text-[#dccce1]">
+            <p className="text-xs font-semibold uppercase text-white">
               {dateLabel(event.date)}
             </p>
 
