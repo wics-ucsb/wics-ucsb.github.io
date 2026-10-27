@@ -7,7 +7,7 @@ import { Target, TrendingUp, GraduationCap, Users, ArrowRight } from "lucide-rea
 const impactStats = [
   { value: "100+", label: "active members" },
   { value: "28", label: "events in the past year" },
-  { value: "50+", label: "high school students directly reached" },
+  { value: "170+", label: "high school students directly reached" },
 ];
 
 const generalMeetings = {
