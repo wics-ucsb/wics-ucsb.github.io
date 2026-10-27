@@ -1,73 +1,67 @@
-import { CalendarEvent } from "@/data/events";
+import type { CalendarEvent } from "@/data/events";
+import { splitFlyer } from "./flyer";
 
-const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID!;
-const API_KEY = process.env.GOOGLE_CALENDAR_API_KEY!;
+const TZ = "America/Los_Angeles";
+const fmtTime = (iso: string) =>
+  new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", timeZone: TZ });
+const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("en-CA", { timeZone: TZ });
 
-interface GoogleApiEvent {
-  id: string;
-  summary?: string;
-  description?: string;
-  location?: string;
-  start: { date?: string; dateTime?: string };
-  end: { date?: string; dateTime?: string };
-}
-
-// Officers can paste "[image: https://...]" anywhere in an event's
-// description in Google Calendar to attach a flyer image.
-function extractImage(description?: string) {
-  if (!description) return { text: "", imageUrl: undefined };
-  const match = description.match(/\[image:\s*(https?:\/\/[^\]\s]+)\]/i);
-  const text = description.replace(/\[image:\s*https?:\/\/[^\]\s]+\]/i, "").trim();
-  return { text, imageUrl: match?.[1] };
-}
-
-function splitDateTime(dt?: { date?: string; dateTime?: string }) {
-  if (dt?.dateTime) {
-    // change dateTime for googleCalendar format
-    return { date: dt.dateTime.slice(0, 10), time: dt.dateTime.slice(11, 16) };
+function dedupe(events: CalendarEvent[]) {
+  const seen = new Map<string, CalendarEvent>();
+  for (const e of events) {
+    const key = `${e.title.trim().toLowerCase()}|${e.date}|${e.startTime}`;
+    const existing = seen.get(key);
+    if (!existing || (!existing.flyerUrl && e.flyerUrl)) seen.set(key, e);
   }
-  return { date: dt?.date ?? "", time: "" }; // all-day event
+  return [...seen.values()];
 }
 
 export async function fetchGoogleCalendarEvents(): Promise<CalendarEvent[]> {
-  const timeMin = new Date();
-  timeMin.setMonth(timeMin.getMonth() - 1); // include recent past for context
+  // Build uses the private server key; the browser uses the public referrer-restricted key
+  const key =
+    typeof window === "undefined"
+      ? process.env.GOOGLE_CALENDAR_API_KEY
+      : process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY;
+  const calendarId =
+    process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_ID ?? process.env.GOOGLE_CALENDAR_ID;
 
+  if (!key || !calendarId) throw new Error("Missing Google Calendar configuration");
+
+  const now = new Date();
   const params = new URLSearchParams({
-    key: API_KEY,
-    singleEvents: "true", // expands recurring events into individual instances
+    key,
+    singleEvents: "true",
     orderBy: "startTime",
-    timeMin: timeMin.toISOString(),
-    maxResults: "250",
+    maxResults: "500",
+    timeMin: new Date(now.getFullYear() - 1, now.getMonth(), 1).toISOString(),
+    timeMax: new Date(now.getFullYear() + 1, now.getMonth(), 1).toISOString(),
   });
 
   const res = await fetch(
-    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?${params}`,
-    { next: { revalidate: 300 } } // re-fetch at most every 5 min
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events?${params}`
   );
-
   if (!res.ok) {
     const body = await res.text();
     throw new Error(`Google Calendar fetch failed: ${res.status} ${res.statusText} - ${body}`);
   }
 
   const data = await res.json();
-  const items: GoogleApiEvent[] = data.items ?? [];
+  const events: CalendarEvent[] = (data.items ?? [])
+    .filter((item: any) => item.status !== "cancelled")
+    .map((item: any) => {
+      const startIso: string | undefined = item.start?.dateTime;
+      const { description, flyerUrl } = splitFlyer(item.description);
+      return {
+        id: item.id,
+        title: item.summary ?? "Untitled event",
+        date: startIso ? fmtDate(startIso) : item.start?.date,
+        startTime: startIso ? fmtTime(startIso) : "",
+        endTime: item.end?.dateTime ? fmtTime(item.end.dateTime) : "",
+        location: item.location ?? "",
+        description,
+        flyerUrl,
+      };
+    });
 
-  return items.map((item) => {
-    const { date, time: startTime } = splitDateTime(item.start);
-    const { time: endTime } = splitDateTime(item.end);
-    const { text, imageUrl } = extractImage(item.description);
-
-    return {
-      id: item.id,
-      title: item.summary ?? "Untitled Event",
-      description: text,
-      date,
-      startTime,
-      endTime,
-      location: item.location ?? "",
-      imageUrl,
-    };
-  });
+  return dedupe(events);
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo, useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { CalendarEvent } from "@/data/events";
 import EventDetailPanel from "./EventDetailPanel";
 
@@ -13,10 +13,10 @@ const PANEL_WIDTH = 340; // px
 export default function Calendar({ events }: CalendarProps) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null); // mobile day list
   const [panelPosition, setPanelPosition] = useState<{ top: number; left: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Group events by date string for quick lookup
   const eventsByDate = useMemo(() => {
     const map: Record<string, CalendarEvent[]> = {};
     events.forEach((e) => {
@@ -38,20 +38,27 @@ export default function Calendar({ events }: CalendarProps) {
   const toDateStr = (day: number) =>
     `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
+  const sheetEvents = selectedDay ? eventsByDate[selectedDay] ?? [] : [];
+  const sheetLabel = selectedDay
+    ? new Date(`${selectedDay}T12:00:00`).toLocaleDateString("default", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
+
   const handleEventClick = (event: CalendarEvent, e: React.MouseEvent<HTMLButtonElement>) => {
     const container = containerRef.current;
     if (container) {
       const containerRect = container.getBoundingClientRect();
       const tileRect = e.currentTarget.getBoundingClientRect();
 
-      // Anchor just to the right of the clicked tile
       let left = tileRect.right - containerRect.left + 12;
       const top = Math.max(
         0,
         Math.min(tileRect.top - containerRect.top, containerRect.height - 320)
       );
 
-      // If it would overflow the right edge, flip to the tile's left side instead
       const maxLeft = containerRect.width - PANEL_WIDTH;
       if (left > maxLeft) {
         left = tileRect.left - containerRect.left - PANEL_WIDTH - 12;
@@ -72,59 +79,122 @@ export default function Calendar({ events }: CalendarProps) {
     <div ref={containerRef} className="relative w-full max-w-5xl mx-auto">
       {/* Month navigation */}
       <div className="flex items-center justify-between mb-6">
-        <button onClick={goToPrevMonth} className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
+        <button onClick={goToPrevMonth} aria-label="Previous month" className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
           <ChevronLeft size={22} />
         </button>
         <h3 className="font-display font-semibold text-xl text-[#334c96]">{monthLabel}</h3>
-        <button onClick={goToNextMonth} className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
+        <button onClick={goToNextMonth} aria-label="Next month" className="p-2 rounded-full hover:bg-[#dccce1]/40 text-[#334c96]">
           <ChevronRight size={22} />
         </button>
       </div>
 
       {/* Weekday labels */}
-      <div className="grid grid-cols-7 text-center md:text-lg text-lg font-bold text-[#6e4479] mb-2">
+      <div className="grid grid-cols-7 text-center text-sm md:text-lg font-bold text-[#6e4479] mb-2">
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div key={d}>{d}</div>
         ))}
       </div>
 
-      <div className="grid grid-cols-7 gap-1.5">
-  {Array.from({ length: daysInMonth }).map((_, i) => {
-    const day = i + 1;
-    const dateStr = toDateStr(day);
-    const dayEvents = eventsByDate[dateStr] ?? [];
+      <div className="grid grid-cols-7 gap-1 md:gap-1.5">
+        {Array.from({ length: daysInMonth }).map((_, i) => {
+          const day = i + 1;
+          const dateStr = toDateStr(day);
+          const dayEvents = eventsByDate[dateStr] ?? [];
+          const hasEvents = dayEvents.length > 0;
 
-    return (
-      <div
-        key={day}
-        style={day === 1 ? { gridColumnStart: firstDayOfMonth + 1 } : undefined}
-        className="aspect-square md:aspect-[4/3] w-full overflow-hidden rounded-lg border border-gray-100 p-1.5 flex flex-col gap-1 bg-white/60"
-      >
-        <span className="md:text-xl text-md text-gray-700">{day}</span>
-        <div className="flex flex-col gap-1 overflow-hidden">
-          {dayEvents.slice(0, 3).map((event) => (
-            <button key={event.id} onClick={(e) => handleEventClick(event, e)}
-              className={`text-left text-[11px] md:text-sm font-bold leading-tight px-1.5 py-1 rounded-md truncate transition-colors ${
-              selectedEvent?.id === event.id
-                ? "bg-[#334c96] text-white"
-                : "bg-[#dccce1]/80 text-[#334c96] hover:bg-[#334c96] hover:text-white"
+          return (
+            <div
+              key={day}
+              style={day === 1 ? { gridColumnStart: firstDayOfMonth + 1 } : undefined}
+              className={`relative aspect-square md:aspect-[4/3] w-full overflow-hidden rounded-lg border p-1 md:p-1.5 flex flex-col gap-1 ${
+                hasEvents
+                  ? "border-[#334c96]/40 bg-[#dccce1]/50 md:border-gray-100 md:bg-white/60"
+                  : "border-gray-100 bg-white/60"
               }`}
             >
-              {event.title}
-            </button>
-            ))}
-            {dayEvents.length > 3 && (
-              <span className="text-[10px] text-gray-400 px-1.5">
-                +{dayEvents.length - 3} more
-                  </span>
-            )}
-            </div>
+              <span className="text-sm md:text-xl text-gray-700">{day}</span>
+
+              {/* Mobile: dots + tap target (opens that day's list) */}
+              {hasEvents && (
+                <>
+                  <div className="md:hidden mt-auto flex justify-center gap-0.5 pb-0.5">
+                    {dayEvents.slice(0, 3).map((ev) => (
+                      <span key={ev.id} className="h-1.5 w-1.5 rounded-full bg-[#334c96]" />
+                    ))}
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDay(dateStr)}
+                    aria-label={`${dayEvents.length} event${dayEvents.length > 1 ? "s" : ""} on ${dateStr}`}
+                    className="md:hidden absolute inset-0"
+                  />
+                </>
+              )}
+
+              {/* Tablet/desktop: event titles */}
+              <div className="hidden md:flex flex-col gap-1 overflow-hidden">
+                {dayEvents.slice(0, 3).map((event) => (
+                  <button
+                    key={event.id}
+                    onClick={(e) => handleEventClick(event, e)}
+                    className={`text-left text-sm font-bold leading-tight px-1.5 py-1 rounded-md truncate transition-colors ${
+                      selectedEvent?.id === event.id
+                        ? "bg-[#334c96] text-white"
+                        : "bg-[#dccce1]/80 text-[#334c96] hover:bg-[#334c96] hover:text-white"
+                    }`}
+                  >
+                    {event.title}
+                  </button>
+                ))}
+                {dayEvents.length > 3 && (
+                  <span className="text-[10px] text-gray-400 px-1.5">+{dayEvents.length - 3} more</span>
+                )}
+              </div>
             </div>
           );
         })}
       </div>
 
-      {/* Desktop popover panel — anchored right next to the clicked date tile */}
+      {/* Mobile: list of the tapped day's events */}
+      {selectedDay && (
+        <div
+          className="md:hidden fixed inset-0 bg-black/40 z-40 flex items-center justify-center p-4"
+          onClick={() => setSelectedDay(null)}
+        >
+          <div
+            className="bg-white rounded-2xl w-full max-w-md max-h-[80vh] overflow-y-auto p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between mb-4">
+              <h4 className="font-display font-bold text-xl text-[#334c96] pr-4">{sheetLabel}</h4>
+              <button onClick={() => setSelectedDay(null)} aria-label="Close" className="text-gray-400 hover:text-gray-600">
+                <X size={18} />
+              </button>
+            </div>
+            <div className="flex flex-col gap-2">
+              {sheetEvents.map((event) => (
+                <button
+                  key={event.id}
+                  onClick={() => {
+                    setSelectedDay(null);
+                    setSelectedEvent(event);
+                  }}
+                  className="rounded-xl bg-[#dccce1]/60 px-4 py-3 text-left font-semibold text-[#334c96]"
+                >
+                  {event.title}
+                  {event.startTime && (
+                    <span className="block text-sm font-normal text-gray-600">
+                      {event.startTime}–{event.endTime}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop popover panel */}
       {selectedEvent && panelPosition && (
         <div
           className="hidden lg:block absolute z-30 bg-white rounded-2xl shadow-xl p-6"
@@ -134,7 +204,7 @@ export default function Calendar({ events }: CalendarProps) {
         </div>
       )}
 
-      {/* Mobile modal — centered on screen, not pinned to the bottom */}
+      {/* Mobile/tablet modal for a single event */}
       {selectedEvent && (
         <div
           className="lg:hidden fixed inset-0 bg-black/40 z-40 flex items-center justify-center p-4"

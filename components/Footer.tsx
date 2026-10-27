@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { Instagram, Linkedin, Github, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { FaInstagram, FaLinkedin } from "react-icons/fa";
+
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/ucsb_wics/", icon: FaInstagram },
+  { label: "LinkedIn", href: "linkedin.com/company/women-in-computer-science-ucsb/", icon: FaLinkedin },
+  { label: "Email", href: "mailto:ucsb.wics@gmail.com", icon: Mail },
+];
 
 const Footer = () => (
   <footer className="gradient-brand text-primary-foreground">
@@ -15,17 +22,27 @@ const Footer = () => (
         <div>
           <h4 className="font-display font-semibold mb-3">Connect</h4>
           <div className="flex gap-3">
-            <a href="#" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors" aria-label="Instagram"><Instagram size={18} /></a>
-            <a href="#" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors" aria-label="LinkedIn"><Linkedin size={18} /></a>
-            <a href="#" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors" aria-label="GitHub"><Github size={18} /></a>
-            <a href="#" className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors" aria-label="Email"><Mail size={18} /></a>
+            {socials.map(({ label, href, icon: Icon }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                className="p-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
+              >
+                <Icon size={18} />
+              </a>
+            ))}
           </div>
         </div>
 
         <div>
           <h4 className="font-display font-semibold mb-3">Stay Updated</h4>
           <p className="text-sm opacity-80 mb-3">Join our mailing list for the latest updates.</p>
-          <Link href="/engage" className="inline-block text-sm px-4 py-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors">
+          <Link
+            href="/engage#join"
+            className="inline-block text-sm px-4 py-2 rounded-lg bg-primary-foreground/10 hover:bg-primary-foreground/20 transition-colors"
+          >
             Subscribe →
           </Link>
         </div>

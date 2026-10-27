@@ -1,33 +1,66 @@
-import Image from 'next/image';
-import { heroContent } from '../data/content';
-import Carousel from './Carousel';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { heroContent } from "../data/content";
+import Carousel from "./Carousel";
+
+const highlights = [
+  {
+    tag: "Technical & professional development",
+    blurb: "Workshops, tech talks, and career events that build real skills and connections.",
+  },
+  {
+    tag: "Community building",
+    blurb: "Mentorship, socials, and study groups with women in tech at UCSB.",
+  },
+  {
+    tag: "High school outreach",
+    blurb: "Introducing high school students to computing and the people in it.",
+  },
+];
 
 export default function Hero() {
-  const slides = heroContent.slides.map((src, i) => (
-    <div key={i} className="relative w-full h-full">
-      <Image
-        src={src}
-        alt={`${heroContent.title} event ${i + 1}`}
-        fill
-        priority={i === 0}
-        className="object-cover"
-      />
-    </div>
-  ));
+  const slides = heroContent.slides.map((src, i) => {
+    const highlight = highlights[i % highlights.length];
+    return (
+      <div key={i} className="relative w-full h-full">
+        <Image
+          src={src}
+          alt={`${heroContent.title} event ${i + 1}`}
+          fill
+          priority={i === 0}
+          className="object-cover"
+        />
+        {/* Bottom-left corner gradient: more opaque in the corner, fading out */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at bottom left, rgba(51,76,150,0.92) 0%, rgba(51,76,150,0.65) 45%, rgba(51,76,150,0) 85%)",
+          }}
+        />
+        <div className="absolute inset-0 flex items-end">
+          <div className="max-w-2xl px-6 pb-14 text-left text-white md:pl-24 md:pb-16">
+            <h1 className="font-display font-bold text-4xl md:text-6xl leading-tight">
+              Welcome to WiCS
+            </h1>
+            <p className="mt-3 text-lg font-semibold text-[#dccce1] md:text-xl">{highlight.tag}</p>
+            <p className="mt-1 text-base leading-relaxed md:text-lg">{highlight.blurb}</p>
+            <Link
+              href="/engage#join"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-[#334c96] hover:bg-[#dccce1] transition-colors"
+            >
+              How to join <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  });
 
   return (
-    <section className="relative w-full md:h-[100vh] h-[85vh] bg-[#dccce1] flex flex-col overflow-hidden">
-      <Carousel slides={slides} />
-      <div>
-        <h1 className="md:text-2xl text-md pt-5 p-10">
-            Women in Computer Science at UC Santa Barbara — empowering everyone in tech regardless of gender, ability, skill level, or major.
-            Check out our latest events{" "}<Link
-            href="/events"
-            className="font-semibold text-[#334c96] underline underline-offset-4 hover:text-[#6e4479] transition-colors">
-            here</Link>!
-        </h1>
-      </div>
+    <section className="relative w-full h-[70vh] md:h-[90vh] min-h-[460px] max-h-[760px] bg-[#dccce1] overflow-hidden">
+      <Carousel slides={slides} autoPlayInterval={3000} />
     </section>
   );
 }

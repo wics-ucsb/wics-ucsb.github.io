@@ -1,27 +1,102 @@
 import Footer from "@/components/Footer";
+import WhyJoin from "@/components/WhyJoin";
+import { Users, Mail, ArrowRight } from "lucide-react";
 
-export const revalidate = 300; // regenerate every 5 min
+const SHORELINE_URL = "https://shoreline.ucsb.edu/WiCS/club_signup";
+const CLUB_EMAIL = "ucsb.wics@gmail.com";
 
-export default async function EventsPage() {
+const introSubject = "WiCS New Member Introduction";
+const introBody = `Hi WiCS team,
+
+Excited to meet you! I am [your name], and I'm a [year] studying [major] at UCSB.
+
+I'm interested in joining WiCS because [your reason].
+
+I'm most excited about: [technical & professional development / community building / high school outreach]
+
+[Anything you want to know!]
+
+Thanks!
+[your name]`;
+
+const introMailto = `mailto:${CLUB_EMAIL}?subject=${encodeURIComponent(introSubject)}&body=${encodeURIComponent(introBody)}`;
+
+const links = [
+  { img: "/images/wics-mailing-list-qr.png", alt: "Mailing List QR", href: "https://tinyurl.com/wics-mailing-list", label: "Join our mailing list" },
+  { img: "/images/wics-new-event-qr.png", alt: "New Event QR", href: "https://tinyurl.com/wics-new-event", label: "Suggest a New WiCS Event" },
+  { img: "/images/wics-new-event-qr.png", alt: "Sponsor QR", href: "https://tinyurl.com/404", label: "Sponsor WiCS" },
+];
+
+export default function EngagePage() {
   return (
-    <main className="flex flex-col items-center min-h-screen max-w-full">
-      <h1 className="text-center font-display font-bold text-4xl mb-5 mt-0 text-[#334c96]">
-        Stay updated with WiCS
-      </h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 md:text-xl text-lg text-[#6e4479] md:gap-20 gap-10 mb-10">
-        <div className="flex flex-col items-center w-[30vh] md:w-[50vh]">
-            <img src="/images/wics-mailing-list-qr.png" alt="Mailing List QR" className="p-5"/>
-            <a href="https://tinyurl.com/wics-mailing-list" className="underline underline-offset-4 hover:text-[#334c96]">Join our mailing list</a>
+    <main className="flex flex-col min-h-screen max-w-full">
+      <WhyJoin compact />
+
+      <section id="join" className="scroll-mt-24 w-full px-6 py-16 text-center">
+        <h1 className="font-display font-bold text-4xl mb-10 text-[#334c96]">Stay updated with WiCS</h1>
+
+        {/* Ways to join */}
+        <div className="mx-auto mb-14 grid max-w-3xl grid-cols-1 gap-6 text-left sm:grid-cols-2">
+          <a
+            href={SHORELINE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#dccce1]/60 text-[#334c96] transition-colors group-hover:bg-[#334c96] group-hover:text-white">
+              <Users size={24} />
+            </div>
+            <h2 className="font-display font-semibold text-xl text-[#334c96]">Join us on Shoreline</h2>
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+              Become an official WiCS member on UCSB Shoreline.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1 font-semibold text-[#6e4479]">
+              Join on Shoreline <ArrowRight size={16} />
+            </span>
+          </a>
+
+          <a
+            href={introMailto}
+            className="group flex flex-col rounded-2xl bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+          >
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#dccce1]/60 text-[#334c96] transition-colors group-hover:bg-[#334c96] group-hover:text-white">
+              <Mail size={24} />
+            </div>
+            <h2 className="font-display font-semibold text-xl text-[#334c96]">Send us an intro email</h2>
+            <p className="mt-2 flex-1 text-sm leading-relaxed text-gray-600">
+              Tell us a little about yourself. We&apos;ve filled in a template, so you only need to
+              add your details.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1 font-semibold text-[#6e4479]">
+              Email us <ArrowRight size={16} />
+            </span>
+          </a>
         </div>
-        <div className="flex flex-col items-center w-[30vh] md:w-[50vh]">
-            <img src="/images/wics-new-event-qr.png" alt="New Event QR" className="p-5"/>
-            <a href="https://tinyurl.com/wics-new-event" className="underline underline-offset-4 hover:text-[#334c96]">Suggest a New WiCS Event</a>
+        <p className="-mt-8 mb-14 text-sm text-gray-500">
+          Email button not opening? Write to us at{" "}
+          <a href={`mailto:${CLUB_EMAIL}`} className="underline underline-offset-4 hover:text-[#334c96]">
+            {CLUB_EMAIL}
+          </a>
+          .
+        </p>
+
+        <div className="mx-auto grid max-w-4xl grid-cols-1 sm:grid-cols-3 gap-10 text-lg md:text-xl text-[#6e4479]">
+          {links.map((l) => (
+            <div key={l.label} className="mx-auto flex w-full max-w-[260px] flex-col items-center">
+              <img src={l.img} alt={l.alt} className="w-full p-5" />
+              <a
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4 hover:text-[#334c96]"
+              >
+                {l.label}
+              </a>
+            </div>
+          ))}
         </div>
-        <div className="flex flex-col items-center w-[30vh] md:w-[50vh]">
-            <img src="/images/wics-new-event-qr.png" alt="Sponsor QR" className="p-5"/>
-            <a href="https://tinyurl.com/404" className="underline underline-offset-4 hover:text-[#334c96]">Sponsor WiCS</a>
-        </div>
-      </div>
+      </section>
+
       <Footer />
     </main>
   );
