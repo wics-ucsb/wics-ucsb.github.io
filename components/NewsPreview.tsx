@@ -33,6 +33,7 @@ export default function NewsPreview({ initialEvents }: { initialEvents: Calendar
                 <img
                   src={event.flyerUrl}
                   alt={event.title}
+                  referrerPolicy="no-referrer"
                   className="h-44 w-full object-cover"
                 />
               )}

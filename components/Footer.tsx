@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/ucsb_wics/", icon: FaInstagram },
-  { label: "LinkedIn", href: "linkedin.com/company/women-in-computer-science-ucsb/", icon: FaLinkedin },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/women-in-computer-science-ucsb/", icon: FaLinkedin },
   { label: "Email", href: "mailto:ucsb.wics@gmail.com", icon: Mail },
 ];
 

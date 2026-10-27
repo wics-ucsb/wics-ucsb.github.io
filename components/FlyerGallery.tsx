@@ -1,57 +1,77 @@
-"use client";
-import { useState } from "react";
-import { CalendarEvent } from "@/data/events";
-import EventDetailPanel from "./EventDetailPanel";
+import type { CalendarEvent } from "@/data/events";
 
-const dateLabel = (d: string) =>
-  new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+const dateLabel = (d: string) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d ?? "")) {
+    console.error("Invalid flyer event date:", d);
+    return "Date TBA";
+  }
 
-export default function FlyerGallery({ events }: { events: CalendarEvent[] }) {
-  const [selected, setSelected] = useState<CalendarEvent | null>(null);
+  const [year, month, day] = d.split("-").map(Number);
+  const parsed = new Date(year, month - 1, day, 12, 0, 0);
 
+  if (
+    parsed.getFullYear() !== year ||
+    parsed.getMonth() !== month - 1 ||
+    parsed.getDate() !== day
+  ) {
+    console.error("Could not parse flyer event date:", d);
+    return "Date TBA";
+  }
+
+  return parsed.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+};
+
+export default function FlyerGallery({
+  events,
+}: {
+  events: CalendarEvent[];
+}) {
   return (
-    <>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {events.map((event, i) => (
-          <button
-            key={event.id}
-            onClick={() => setSelected(event)}
-            className={`group relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#dccce1]/40 text-left shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-              i >= 6 ? "hidden lg:block" : i >= 4 ? "hidden md:block" : ""
-            }`}
-          >
-            {event.flyerUrl ? (
-              <img
-                src={event.flyerUrl}
-                alt={event.title}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            ) : (
-              <div className="h-full w-full bg-gradient-to-br from-[#334c96] to-[#6e4479]" />
-            )}
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#334c96]/90 to-transparent p-3 pt-10">
-              <p className="text-xs font-semibold uppercase text-[#dccce1]">{dateLabel(event.date)}</p>
-              <p className="font-display font-semibold leading-tight text-white line-clamp-2">
-                {event.title}
-              </p>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {selected && (
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+      {events.map((event, i) => (
         <div
-          className="fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4"
-          onClick={() => setSelected(null)}
+          key={event.id}
+          className={`relative aspect-[4/5] overflow-hidden rounded-2xl bg-[#dccce1]/40 shadow-md ${
+            i >= 6
+              ? "hidden lg:block"
+              : i >= 4
+                ? "hidden md:block"
+                : ""
+          }`}
         >
-          <div
-            className="w-full max-w-md max-h-[80vh] overflow-y-auto rounded-2xl bg-white p-6"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <EventDetailPanel event={selected} onClose={() => setSelected(null)} />
+          {event.flyerUrl ? (
+            <img
+              src={event.flyerUrl}
+              alt={event.title}
+              referrerPolicy="no-referrer"
+              className="h-full w-full object-cover"
+              onError={(e) => {
+                console.error(
+                  "Failed to load event flyer:",
+                  event.title,
+                  event.flyerUrl
+                );
+                e.currentTarget.style.display = "none";
+              }}
+            />
+          ) : (
+            <div className="h-full w-full bg-gradient-to-br from-[#334c96] to-[#6e4479]" />
+          )}
+
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#334c96]/90 to-transparent p-3 pt-10">
+            <p className="text-xs font-semibold uppercase text-[#dccce1]">
+              {dateLabel(event.date)}
+            </p>
+
+            <p className="font-display font-semibold leading-tight text-white line-clamp-2">
+              {event.title}
+            </p>
           </div>
         </div>
-      )}
-    </>
+      ))}
+    </div>
   );
 }

@@ -20,7 +20,7 @@ export default function EventDetailPanel({
       </button>
 
       {event.flyerUrl && (<img src={event.flyerUrl} alt={event.title}
-            className="w-full h-40 object-cover rounded-xl mb-4" />
+            className="w-full h-40 object-cover rounded-xl mb-4" referrerPolicy="no-referrer" />
       )}
 
       <h4 className="font-display font-bold text-xl text-[#334c96] mb-1 pr-6">

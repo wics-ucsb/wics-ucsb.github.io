@@ -1,11 +1,13 @@
 import Footer from "@/components/Footer";
 import WhyJoin from "@/components/WhyJoin";
-import { Users, Mail, ArrowRight } from "lucide-react";
+import { Users, Mail, ArrowRight, Handshake } from "lucide-react";
 
-const SHORELINE_URL = "https://shoreline.ucsb.edu/WiCS/club_signup";
-const CLUB_EMAIL = "ucsb.wics@gmail.com";
+const SHORELINE_URL = "https://shoreline.ucsb.edu/WiCS/club_signup";   // your WiCS Shoreline page
+const CLUB_EMAIL = "ucsb.wics@gmail.com";                  // your club email
+const SPONSOR_URL = "https://tinyurl.com/sponsor-wics";          // sponsor interest form / info
+const SPONSOR_QR = "/images/wics-sponsor-qr.png";      // needs its own QR image
 
-const introSubject = "WiCS New Member Introduction";
+const introSubject = "Hi WiCS! Introduction";
 const introBody = `Hi WiCS team,
 
 Excited to meet you! I am [your name], and I'm a [year] studying [major] at UCSB.
@@ -23,8 +25,8 @@ const introMailto = `mailto:${CLUB_EMAIL}?subject=${encodeURIComponent(introSubj
 
 const links = [
   { img: "/images/wics-mailing-list-qr.png", alt: "Mailing List QR", href: "https://tinyurl.com/wics-mailing-list", label: "Join our mailing list" },
+  { img: "/images/wics-bubbles-qr.png", alt: "BUBBLES QR", href: "https://tinyurl.com/wics-bubbles", label: "WiCS BUBBLES" },
   { img: "/images/wics-new-event-qr.png", alt: "New Event QR", href: "https://tinyurl.com/wics-new-event", label: "Suggest a New WiCS Event" },
-  { img: "/images/wics-new-event-qr.png", alt: "Sponsor QR", href: "https://tinyurl.com/404", label: "Sponsor WiCS" },
 ];
 
 export default function EngagePage() {
@@ -32,6 +34,7 @@ export default function EngagePage() {
     <main className="flex flex-col min-h-screen max-w-full">
       <WhyJoin compact />
 
+      {/* Join / stay updated */}
       <section id="join" className="scroll-mt-24 w-full px-6 py-16 text-center">
         <h1 className="font-display font-bold text-4xl mb-10 text-[#334c96]">Stay updated with WiCS</h1>
 
@@ -80,7 +83,7 @@ export default function EngagePage() {
           .
         </p>
 
-        <div className="mx-auto grid max-w-4xl grid-cols-1 sm:grid-cols-3 gap-10 text-lg md:text-xl text-[#6e4479]">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 sm:grid-cols-2 gap-10 text-lg md:text-xl text-[#6e4479]">
           {links.map((l) => (
             <div key={l.label} className="mx-auto flex w-full max-w-[260px] flex-col items-center">
               <img src={l.img} alt={l.alt} className="w-full p-5" />
@@ -94,6 +97,35 @@ export default function EngagePage() {
               </a>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Sponsor */}
+      <section id="sponsor" className="scroll-mt-24 w-full bg-[#f7f5f9] px-6 py-16">
+        <div className="mx-auto grid max-w-4xl items-center gap-10 md:grid-cols-2">
+          <div className="text-center md:text-left">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[#dccce1]/60 text-[#334c96] md:mx-0">
+              <Handshake size={26} />
+            </div>
+            <h2 className="font-display font-bold text-3xl mb-4 text-[#334c96]">Sponsor WiCS</h2>
+            <p className="text-lg leading-relaxed text-[#6e4479]">
+              Help us bring workshops, career events, and high school outreach to more students.
+              Reach out to learn about sponsorship opportunities.
+            </p>
+            <a
+              href={SPONSOR_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#334c96] px-6 py-3 font-bold text-white transition-colors hover:bg-[#6e4479]"
+            >
+              Become a sponsor <ArrowRight size={18} />
+            </a>
+          </div>
+
+          <div className="mx-auto flex w-full max-w-[260px] flex-col items-center">
+            <img src={SPONSOR_QR} alt="Sponsor WiCS QR code" className="w-full rounded-2xl bg-white p-5 shadow-md" />
+            <p className="mt-3 text-sm text-gray-600">Scan to learn more</p>
+          </div>
         </div>
       </section>
 
