@@ -44,7 +44,7 @@ export default function Hero() {
             <h1 className="font-display font-bold text-4xl md:text-6xl leading-tight">
               We are WiCS
             </h1>
-            <p className="mt-3 text-xl font-semibold text-[#dccce1] md:text-2xl">{highlight.tag}: {highlight.blurb}</p>
+            <p className="mt-3 text-base font-semibold text-[#dccce1] md:text-2xl">{highlight.tag}: {highlight.blurb}</p>
             <Link
               href="/engage#join"
               className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-bold text-[#334c96] hover:bg-[#dccce1] transition-colors"

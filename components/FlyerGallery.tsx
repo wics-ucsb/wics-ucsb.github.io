@@ -71,7 +71,7 @@ export default function FlyerGallery({
               {dateLabel(event.date)}
             </p>
 
-            <p className="font-display font-semibold leading-tight text-white line-clamp-2">
+            <p className="text-xs md:font-display md:text-base md:font-semibold leading-tight text-white line-clamp-2">
               {event.title}
             </p>
           </div>

@@ -26,7 +26,7 @@ export default function HomePage() {
     <main className="flex flex-col min-h-screen">
       {/* Officers Section */}
       <section className="w-full py-16 px-6">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="md:max-w-5xl mx-auto text-center">
           <h2 className="font-display font-bold text-3xl mb-10 text-[#334c96]">
             Who We Are
           </h2>

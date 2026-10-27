@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
     name: "Athena Chen",
     position: "Vice President",
     email: "athenachen@ucsb.edu",
-    image: "/images/team/athena.png",
+    image: "/images/team/athena.jpg",
   },
   {
     id: "4",
@@ -54,14 +54,14 @@ export const teamMembers: TeamMember[] = [
     name: "Naz Oguz",
     position: "Head of Events & Publicity, Social",
     email: "nazoguz@ucsb.edu",
-    image: "/images/team/icon.png",
+    image: "/images/team/naz.png",
   },
   {
     id: "8",
     name: "Duru Arda",
     position: "Head of Events & Publicity, Career & Alum",
     email: "duruarda@ucsb.edu",
-    image: "/images/team/icon.png",
+    image: "/images/team/duru.jpeg",
   },
   {
     id: "9",
