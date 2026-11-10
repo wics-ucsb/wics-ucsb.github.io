@@ -24,8 +24,8 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
-          CAL: ${{ secrets.GOOGLE_CALENDAR_ID }}
+          GOOGLE_CALENDAR_API_KEY: ${{ secrets.GOOGLE_CALENDAR_API_KEY }}
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
           NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY: ${{ secrets.NEXT_PUBLIC_GOOGLE_CALENDAR_API_KEY }}
           NEXT_PUBLIC_GOOGLE_CALENDAR_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_CALENDAR_ID }}
       - uses: actions/upload-pages-artifact@v3
